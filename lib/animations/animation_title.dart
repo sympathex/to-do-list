@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list/models/todo.dart';
-import 'package:to_do_list/theme/theme_colors.dart';
 
 class Animatedtitle extends StatelessWidget {
   final Todo todo;
