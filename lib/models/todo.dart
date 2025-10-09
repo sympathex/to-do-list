@@ -6,7 +6,7 @@ import 'package:to_do_list/new_card.dart';
 part 'todo.g.dart'; // this will be generated
 
 @HiveType(typeId: 0)
-class Todo {
+class Todo  extends HiveObject{
   @HiveField(0)
   final String title;
 
@@ -17,7 +17,7 @@ class Todo {
   bool isDone;
 
   Todo
-  ({ required this.title , required this.description , this.isDone=false});
+  ({ required this.title , required this.description , this.isDone = false});
 }
 
 class TodoListView extends StatefulWidget {

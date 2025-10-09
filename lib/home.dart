@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list/theme_manager.dart';
+import 'package:to_do_list/theme/theme_manager.dart';
 import 'models/todo.dart';
 import 'add.dart';
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,12 +15,14 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         centerTitle: true,
-        title: Text('ToDo List', style: TextStyle(fontSize: 40.0)),
+        title: Text('ToDo List', style: Theme.of(context).textTheme.headlineLarge,),
         actions: const [
-          ThemeSwitcher(),
+          ThemeToggleButton(),
         ],
+        backgroundColor: Colors.transparent,
       ),
         body: Column(
           children: [
@@ -30,9 +33,9 @@ class _HomeState extends State<Home> {
                 onPressed: (){
                   showDialog(context: context, builder: (context) => const AddTodoPage());
                 },
-                label: const Text('New Todo'),
-                icon: Icon(Icons.add_circle),)
-                //label: Text('New ToDo'), icon: Icon(Icons.add_circle)),
+                label: const Text('New Todo',),
+                icon: Icon(Icons.add_circle)
+              )
             ),
             SizedBox(height: 10.0,),
 
@@ -40,16 +43,6 @@ class _HomeState extends State<Home> {
             const Expanded(child: TodoListView()),
           ],
         ),
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: (){
-        //     showDialog(
-        //       context: context,
-        //       builder: (context) => const AddTodoPage(),
-        //     );
-        //   },
-        //   //backgroundColor: ,
-        //   child: Icon(Icons.add_circle),
-        // ),
       );
   }
 }

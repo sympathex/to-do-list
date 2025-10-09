@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'home.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'models/todo.dart';
-import 'theme_manager.dart';
+import 'theme/theme_manager.dart';
+import 'theme/theme_colors.dart';
+import 'theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +16,16 @@ void main() async {
   Hive.registerAdapter(TodoAdapter());
 
   // open the box (type-safe)
-  await Hive.openBox<Todo>('todosBox');
+  final todosBox = await Hive.openBox<Todo>('todosBox');
+
+  // Repair step: fix null `isDone` fields
+  for (var todo in todosBox.values) {
+    final dynamic dynamicTodo = todo; //avoid type cast crash
+    if (dynamicTodo.isDone == null) {
+      dynamicTodo.isDone = false;
+      await dynamicTodo.save();
+    }
+  }
 
   runApp(const MyApp());
 }
@@ -34,17 +45,12 @@ class _MyAppState extends State<MyApp> {
       valueListenable: ThemeNotifier.themeModeNotifier,
       builder: (context, themeMode, _) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'Todo List',
-          theme: ThemeData(
-            brightness: Brightness.light,
-            primarySwatch: Colors.teal,
-          ),
-          darkTheme: ThemeData(
-            brightness: Brightness.dark,
-            primarySwatch: Colors.teal,
-          ),
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
           themeMode: themeMode, // Light, dark, system
-          home: Home(),
+          home: AppBackground(child: const Home()),
         );
       }
     );
