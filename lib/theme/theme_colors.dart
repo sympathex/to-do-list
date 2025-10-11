@@ -4,13 +4,13 @@ class AppColors {
   // Light Mode Theme Colors
   //static const Color lightBackground = Color();
   static const Color lightPrimary = Color(0xFFbdac86);
-  static const Color lightAccent = Color(0xFF2f6352);
+  static const Color lightAccent = Color(0xFFa48d78);
   static const Color lightText = Color(0xFF472f26);
   static const Color lightCard = Color(0xFFe6dac8);
 
   // Dark Mode Theme Colors
   static const Color darkPrimary = Color(0xFF3d211a);
-  static const Color darkAccent = Color(0xFF568f7c);
+  static const Color darkAccent = Color(0xFFa07856);
   static const Color darkText = Color(0xFFded1ba);
   static const Color darkCard = Color(0xFF6f4d38);
 

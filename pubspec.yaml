@@ -80,9 +80,14 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Macterla
+    - family: EduSAHand
       fonts: 
-        - asset: assets/fonts/Macterla.otf
+        - asset: assets/fonts/EduSAHand-VariableFont_wght.ttf
+        - asset: assets/fonts/EduSAHand-Regular.ttf
+        - asset: assets/fonts/EduSAHand-Bold.ttf
+        - asset: assets/fonts/EduSAHand-Medium.ttf
+        - asset: assets/fonts/EduSAHand-SemiBold.ttf
+  
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

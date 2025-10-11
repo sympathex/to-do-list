@@ -27,9 +27,19 @@ class AppTheme {
     onError: Colors.white,
   );
 
-  // Helper to apply alpha without using deprecated withOpacity()
+  // Safer helper for applying alpha without using deprecated APIs
   static Color _withAlpha(Color c, double alpha) {
-    return Color.fromARGB((alpha * 255).round(), c.red, c.green, c.blue);
+    // Clamp alpha to [0,1] (just in case)
+    final double a = alpha.clamp(0.0, 1.0);
+
+    // The .r, .g, .b getters give values in [0,1]
+    // Multiply by 255.0 to convert to 8-bit integers
+    return Color.fromARGB(
+      (a * 255).round(),
+      (c.r * 255).round(),
+      (c.g * 255).round(),
+      (c.b * 255).round(),
+    );
   }
 
   static final ThemeData lightTheme = ThemeData(
@@ -38,6 +48,7 @@ class AppTheme {
     primaryColor: lightColorScheme.primary,
     cardColor: lightColorScheme.surface,
     scaffoldBackgroundColor: Colors.transparent,
+    fontFamily: 'EduSAHand',
     appBarTheme: AppBarTheme(
       backgroundColor: lightColorScheme.primary,
       foregroundColor: lightColorScheme.onPrimary,
@@ -82,6 +93,7 @@ class AppTheme {
     primaryColor: darkColorScheme.primary,
     cardColor: darkColorScheme.surface,
     scaffoldBackgroundColor: Colors.transparent,     // transparent for image
+    fontFamily: 'EduSAHand',
     appBarTheme: AppBarTheme(
       backgroundColor: darkColorScheme.primary,
       foregroundColor: darkColorScheme.onPrimary,

@@ -50,6 +50,20 @@ class _MyAppState extends State<MyApp> {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: themeMode, // Light, dark, system
+          builder: (context, child) {
+            final mq = MediaQuery.of(context);
+
+            // produce a TextScaler that limits scaling to 0.8x-1.3x
+            final clampedScaler = mq.textScaler.clamp(
+              minScaleFactor: 0.8,
+              maxScaleFactor: 1.4,
+            );
+            
+            return MediaQuery(
+              data: mq.copyWith(textScaler: clampedScaler),
+              child: child!
+            );
+          },
           home: AppBackground(child: const Home()),
         );
       }
