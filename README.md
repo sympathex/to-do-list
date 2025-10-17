@@ -1,6 +1,7 @@
-# to_do_list
+# Todo List
 
-A To Do List Application.
+A Todo List Application. This is officially my first Flutter project.
+I'm really enjoying this SDK.
 
 ## Getting Started
 
