@@ -28,9 +28,9 @@ class Animatedtitle extends StatelessWidget {
             //Animated strikethrough line 
             AnimatedContainer(duration: const Duration(milliseconds: 350),
               curve: Curves.easeInOutCubic,
-              height: 2.0,
+              height: 1,
               width: todo.isDone ? constraints.maxWidth : 0,
-              color: Colors.grey.withValues(alpha: 0.7),
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.9),
             )
           ],
         );

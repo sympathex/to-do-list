@@ -35,11 +35,11 @@ class _NewCardState extends State<NewCard> {
       curve: Curves.easeOutCubic,
       margin: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10.0),
       decoration: BoxDecoration(
-        color: colorScheme.surface.withValues(alpha: 0.8),   // opacity background only
+        color: colorScheme.surface.withValues(alpha: 0.7),   // opacity background only
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: colorScheme.onSurface.withValues(alpha: 0.1),
+            color: colorScheme.secondary.withValues(alpha: 0.9),
             blurRadius: 6,
             offset: const Offset(2, 3),
           ),
